@@ -371,3 +371,33 @@ section.footer {
   height: 60px;
 }
 
+
+
+.image-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  .full-screen-image {
+    height: 100vh;
+    opacity: 0.3;
+  }
+}
+
+.description-hide {
+  display: none;
+}
+
+.article {
+  color: #ffffff;
+  position: relative;
+  z-index:10;
+
+  h2.title {
+    font-size:5vw;
+  }
+}
+

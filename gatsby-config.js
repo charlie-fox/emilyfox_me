@@ -4,7 +4,10 @@ if (process.env.ENVIRONMENT !== 'production') {
   dotenv.config();
 }
 
-const { spaceId, accessToken } = process.env;
+const {
+  spaceId,
+  accessToken
+} = process.env;
 
 module.exports = {
   siteMetadata: {
@@ -16,8 +19,7 @@ module.exports = {
       twitter: `emilyfox`,
     },
   },
-  plugins: [
-    {
+  plugins: [{
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/articles`,
@@ -34,8 +36,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [
-          {
+        plugins: [{
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
@@ -82,6 +83,6 @@ module.exports = {
         spaceId,
         accessToken,
       },
-    },    
+    },
   ],
 }
