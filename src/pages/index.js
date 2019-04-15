@@ -1,10 +1,13 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
+import Nav from "../components/navigation"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import Services from "../components/services"
+import About from "../components/about"
+import Contact from "../components/contact"
+
 
 class ArticleIndex extends React.Component {
   render() {
@@ -18,26 +21,39 @@ class ArticleIndex extends React.Component {
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
-        <Bio />
-        {articles.map(({ node }) => {
-          const title = node.title || node.slug
-          return (
-            <div key={node.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.slug}>
-                  {title}
-                </Link>
-              </h3>
+        <Nav />
 
-              <div>{node.description.description}</div>
+          <section className="portfolio">          
+            <h2 className="title">Portfolio</h2>
+            <h4 className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+            <div className="portfolio-grid">
+              {articles.map(({ node }) => {
+                const title = node.title || node.slug
+                return (
+                  <div key={node.slug}>
+                    <div className="article-overlay">
+                      <img src="https://source.unsplash.com/random" />
+                    </div>
+                    <div className="article-content">
+                      <span className="title">
+                        <Link style={{ boxShadow: `none` }} to={node.slug}>
+                          {title}
+                        </Link>                      
+                      </span>
+                      <span className="excerpt">
+                        {node.description.description}
+                      </span>
+                      <span className="view-on"><a href="#">View on Medium</a></span>              
+                    </div>
 
+                  </div>
+                )
+              })}
             </div>
-          )
-        })}
+          </section>
+        <Services />
+        <About />
+        <Contact />
       </Layout>
     )
   }

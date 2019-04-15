@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/content/articles`,
+        name: `articles`,
       },
     },
     {
@@ -53,6 +53,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -75,12 +76,6 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
     {
       resolve: `gatsby-source-contentful`,
       options: {
