@@ -6,11 +6,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-class BlogIndex extends React.Component {
+class ArticleIndex extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    const articles = data.allContentfulArticle.edges
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -19,25 +19,22 @@ class BlogIndex extends React.Component {
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
         <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
+        {articles.map(({ node }) => {
+          const title = node.title || node.slug
           return (
-            <div key={node.fields.slug}>
+            <div key={node.slug}>
               <h3
                 style={{
                   marginBottom: rhythm(1 / 4),
                 }}
               >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                <Link style={{ boxShadow: `none` }} to={node.slug}>
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
+
+              <div>{node.description.description}</div>
+
             </div>
           )
         })}
@@ -46,7 +43,7 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default ArticleIndex
 
 export const pageQuery = graphql`
   query {
@@ -55,16 +52,12 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allContentfulArticle {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
+          title
+          slug
+          description {
             description
           }
         }
