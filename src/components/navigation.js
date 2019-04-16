@@ -1,5 +1,6 @@
 import React from 'react';
 import Sticky from "react-sticky-state"
+import { Link } from "gatsby"
 
 class Nav extends React.Component {
   static defaultProps = {
@@ -13,13 +14,13 @@ class Nav extends React.Component {
       <Sticky>
         <div className="App-navigation">
           <div className="logo">
-            Emily Fox
+            <Link to="/#top">Emily Fox</Link>
           </div>
           <div className="links">
-            <div>Portfolio</div>
-            <div>Services</div>
-            <div>About</div>
-            <div>Hire Emily</div>
+            <div><Link to="/#portfolio">Portfolio</Link></div>
+            <div><Link to="/services">Services</Link></div>
+            <div><Link to="/about">About</Link></div>
+            <div><Link to="/contact">Contact</Link></div>
           </div>
         </div>  
       </Sticky>

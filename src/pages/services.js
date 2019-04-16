@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link, graphql } from "gatsby"
 import Nav from "../components/navigation"
-import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -11,13 +11,32 @@ class Services extends React.Component {
   }
 
   render() {
+    const { data } = this.props
+    const siteTitle = data.site.siteMetadata.title
     return (
-      <section className="services">
-        <h2 className="title">{this.props.title}</h2>
-        <p>{this.props.description}</p>
-      </section>      
+      <Layout location={this.props.location} title={siteTitle}>
+        <SEO
+          title="All posts"
+          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+        />
+        <Nav />      
+        <section className="services">
+          <h2 className="title">{this.props.title}</h2>
+          <p>{this.props.description}</p>
+        </section>   
+      </Layout>
     );
   }
 }
 
 export default Services
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
