@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Image from "../components/image"
 
 if (typeof window !== "undefined") {
   // eslint-disable-next-line global-require
@@ -20,7 +21,9 @@ class Layout extends React.Component {
       hero = (
         <div id="top">
           <section className="intro">
-            <div className="hero-overlay"/>
+            <div className="hero-overlay"><Image/></div>
+
+            {/* <Img className="full-screen-image" fluid={article.featuredImage.fluid} /> */}
             <div className="intro-panel">
               <h2 className="title">Emily Fox</h2>
               <h3 className="subtitle">Freelance Writer</h3>
